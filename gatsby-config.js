@@ -5,9 +5,9 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: "Sam's Sabers",
-    description: "Browse Sam's custom lightsabers.",
+    description: "Browse Sam The Sabersmith's custom hand-crafted lightsabers.",
     author: `@kelsonic`,
-    siteUrl: `https://samslightsabers.com`,
+    siteUrl: `https://SabersmithSam.com`,
   },
   plugins: [
     `gatsby-plugin-less`,
@@ -29,10 +29,10 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
+        background_color: `#000000`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
+        // theme_color: `#000000`,
         display: `minimal-ui`,
         icon: `src/images/millennium-falcon.png`, // This path is relative to the root of the site.
       },
