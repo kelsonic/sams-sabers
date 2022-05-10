@@ -1,0 +1,128 @@
+@font-face {
+  font-family: "Star Jedi";
+  src: url("../fonts/Starjedi.ttf");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  overflow-y: scroll;
+}
+
+body {
+  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
+  -moz-osx-font-smoothing: grayscale;
+  -ms-font-feature-settings: "kern", "liga", "clig", "calt";
+  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
+  -webkit-font-smoothing: antialiased;
+  background: rgb(21, 21, 21);
+  background: radial-gradient(
+    circle,
+    rgba(21, 21, 21, 1) 40%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  color: #999999;
+  font-family: "Source Sans Pro", sans-serif;
+  font-feature-settings: "kern", "liga", "clig", "calt";
+  font-kerning: normal;
+  font-weight: normal;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+footer {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  width: 100%;
+  z-index: 1;
+}
+
+a {
+  color: #999999;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a,
+a:focus,
+a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+h1 {
+  color: #ffffff;
+  font-family: "Star Jedi";
+  font-size: 2rem;
+  letter-spacing: 3px;
+  text-align: center;
+  width: 100%;
+}
+
+h2 {
+  color: #ffffff;
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 5rem;
+    letter-spacing: 7px;
+  }
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+}
+
+.background-stars {
+  left: 0;
+  min-height: 100%;
+  min-width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
+
+@keyframes millenniumFalconFlight {
+  0% {
+    transform: rotate(50deg) translate(0, 0);
+  }
+  50% {
+    transform: rotate(50deg) translate(100vw, -170vh);
+  }
+}
+
+.millennium-falcon {
+  animation: millenniumFalconFlight 10s linear infinite;
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  height: 50px;
+  width: 50px;
+  /* z-index: -1; */
+}

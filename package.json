@@ -1,0 +1,48 @@
+{
+  "name": "website",
+  "private": true,
+  "description": "The main website for Sam's sabers.",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "gatsby develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "dependencies": {
+    "@types/styled-components": "^5.1.23",
+    "axios": "^0.26.0",
+    "dotenv": "^16.0.0",
+    "gatsby": "^4.7.2",
+    "gatsby-plugin-fullstory": "^4.9.0",
+    "gatsby-plugin-gatsby-cloud": "^4.7.0",
+    "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-google-gtag": "^4.9.0",
+    "gatsby-plugin-image": "^2.7.0",
+    "gatsby-plugin-less": "^6.9.0",
+    "gatsby-plugin-manifest": "^4.7.0",
+    "gatsby-plugin-offline": "^5.7.0",
+    "gatsby-plugin-react-helmet": "^5.7.0",
+    "gatsby-plugin-sharp": "^4.7.0",
+    "gatsby-plugin-styled-components": "^5.7.0",
+    "gatsby-source-filesystem": "^4.7.0",
+    "gatsby-transformer-sharp": "^4.7.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.34",
+    "prop-types": "^15.8.0",
+    "react": "^17.0.1",
+    "react-burger-menu": "^3.0.6",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "rsuite": "^5.6.4",
+    "styled-components": "^5.3.3",
+    "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  }
+}
