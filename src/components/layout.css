@@ -42,6 +42,8 @@ main {
   flex-direction: column;
   min-height: 100vh;
   position: relative;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 footer {
@@ -112,6 +114,9 @@ li {
     transform: rotate(50deg) translate(0, 0);
   }
   50% {
+    transform: rotate(50deg) translate(100vw, -170vh);
+  }
+  100% {
     transform: rotate(50deg) translate(100vw, -170vh);
   }
 }
