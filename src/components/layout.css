@@ -102,7 +102,7 @@ li {
   left: 0;
   min-height: 100%;
   min-width: 100%;
-  position: fixed;
+  position: fixed !important; /* !important necessary due to .gatsby-image-wrapper being applied on build. */
   top: 0;
   z-index: -1;
 }
@@ -124,5 +124,4 @@ li {
   z-index: 1;
   height: 50px;
   width: 50px;
-  /* z-index: -1; */
 }
