@@ -26,7 +26,6 @@ const NotFoundPage = () => (
       <StaticImage
         alt="404 death star"
         formats={["auto", "webp", "avif"]}
-        quality={95}
         src="../images/404.jpeg"
       />
     </Wrapper>

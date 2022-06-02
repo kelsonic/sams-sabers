@@ -36,12 +36,19 @@ body {
   word-wrap: break-word;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
 main {
   align-items: center;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   position: relative;
+  flex-grow: 1;
   max-width: 100%;
   overflow: hidden;
 }
@@ -111,13 +118,19 @@ li {
 
 @keyframes millenniumFalconFlight {
   0% {
-    transform: rotate(50deg) translate(0, 0);
+    transform: translate(0, 0) rotate(40deg);
+  }
+  40% {
+    transform: translateX(40vw) translateY(10vh) rotate(50deg);
   }
   50% {
-    transform: rotate(50deg) translate(100vw, -170vh);
+    transform: translateX(50vw) translateY(12vh) rotate(30deg);
+  }
+  60% {
+    transform: translateX(60vw) translateY(10vh) rotate(35deg);
   }
   100% {
-    transform: rotate(50deg) translate(100vw, -170vh);
+    transform: translateX(100vw) translateY(0);
   }
 }
 
