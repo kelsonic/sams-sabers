@@ -11,7 +11,24 @@ const Layout = ({ children }) => {
   }, [])
 
   return (
-    <>
+
+    <div className="container">
+       <StaticImage
+      alt="background stars"
+      className="background-stars"
+      formats={["auto", "webp", "avif"]}
+      quality={95}
+      src="../images/background-stars.jpeg"
+    />
+
+    <StaticImage
+      alt="Millennium Falcon"
+      className="millennium-falcon"
+      formats={["auto", "webp", "avif"]}
+      quality={95}
+      src="../images/millennium-falcon.png"
+    />
+    
       {/* Main content */}
       <main>{children}</main>
 
@@ -28,7 +45,7 @@ const Layout = ({ children }) => {
           .
         </p>
       </footer>
-    </>
+    </div>
   )
 }
 
