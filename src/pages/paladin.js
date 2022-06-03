@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 // Relative imports.
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import ArrowIcon from '../images/arrow.svg'
+import ArrowIcon from "../images/arrow.svg"
 
 const Wrapper = styled.div`
   align-items: center;
@@ -48,7 +48,7 @@ const Wrapper = styled.div`
   .saber-image {
     max-height: 275px;
   }
-  
+
   .hidden {
     display: none;
   }
@@ -83,95 +83,107 @@ const Wrapper = styled.div`
 `
 
 const PaladinPage = () => {
+  const [selectedImage, setSelectedImage] = useState(1)
+  const imageCount = 3
 
-  const [selectedImage, setSelectedImage] = useState(1);
-  const imageCount = 3;
-
-  const changeImage = (count) => {
-    const newCount = selectedImage + count;
+  const changeImage = count => {
+    const newCount = selectedImage + count
 
     if (newCount > imageCount) {
-      setSelectedImage(1);
-      return;
+      setSelectedImage(1)
+      return
     }
-    if (newCount  < 1) {
-      setSelectedImage(imageCount);
-      return;
+    if (newCount < 1) {
+      setSelectedImage(imageCount)
+      return
     }
 
-    setSelectedImage(newCount);
+    setSelectedImage(newCount)
   }
 
   return (
-  <Layout>
-    <Seo title="Paladin" />
-    <Wrapper>
+    <Layout>
+      <Seo title="Paladin" />
+      <Wrapper>
+        <Link to="/" className="">
+          <h1>SAM&apos;S SABERS</h1>
+        </Link>
 
-    <Link to="/" className="">
-      <h1>SAM&apos;S SABERS</h1>
-      </Link>
-
-      <ul>
-        <li>
-          {/* Images */}
-          <div className="images">
-            <div className="arrow-holder">
-              <ArrowIcon className="left-arrow" onClick={()=> changeImage(-1)}/>
+        <ul>
+          <li>
+            {/* Images */}
+            <div className="images">
+              <div className="arrow-holder">
+                <ArrowIcon
+                  className="left-arrow"
+                  onClick={() => changeImage(-1)}
+                />
+              </div>
+              <div className="focused-image">
+                <StaticImage
+                  alt="paladin 1"
+                  className={`saber-image ${
+                    selectedImage === 1 ? "selected" : "hidden"
+                  }`}
+                  formats={["auto", "webp", "avif"]}
+                  src="../images/paladin-1.jpg"
+                />
+                <StaticImage
+                  alt="paladin 2"
+                  className={`saber-image ${
+                    selectedImage === 2 ? "selected" : "hidden"
+                  }`}
+                  formats={["auto", "webp", "avif"]}
+                  src="../images/paladin-2.jpg"
+                />
+                <StaticImage
+                  alt="paladin 3"
+                  className={`saber-image ${
+                    selectedImage === 3 ? "selected" : "hidden"
+                  }`}
+                  formats={["auto", "webp", "avif"]}
+                  src="../images/paladin-3.jpg"
+                />
+              </div>
+              <div className="arrow-holder">
+                <ArrowIcon
+                  className="right-arrow"
+                  onClick={() => changeImage(1)}
+                />
+              </div>
             </div>
-            <div className="focused-image">
-              <StaticImage
-                alt="paladin 1"
-                className={`saber-image ${selectedImage === 1 ? "selected" : "hidden"}`}
-                formats={["auto", "webp", "avif"]}
-                src="../images/paladin-1.jpg"
-              />
-              <StaticImage
-                alt="paladin 2"
-                className={`saber-image ${selectedImage === 2 ? "selected" : "hidden"}`}
-                formats={["auto", "webp", "avif"]}
-                src="../images/paladin-2.jpg"
-              />
-              <StaticImage
-                alt="paladin 3"
-                className={`saber-image ${selectedImage === 3 ? "selected" : "hidden"}`}
-                formats={["auto", "webp", "avif"]}
-                src="../images/paladin-3.jpg"
-              />
-            </div>
-            <div className="arrow-holder">
-              <ArrowIcon className="right-arrow" onClick={()=> changeImage(1)}/>
-            </div>
-          </div>
 
-          {/* Title */}
-          <h2>The Paladin</h2>
+            {/* Title */}
+            <h2>The Paladin</h2>
 
-          {/* Description */}
-          <p>
-            This saber uses an MHSv1 core with a pair of custom cut aluminum
-            shrouds to accentuate the choke. Accent LEDs in the choke create a
-            'reactor' effect, matching the blade color the same way a crystal
-            chamber would.
-          </p>
-          <p>
-            Using the latest Crystal Focus X soundboard, a 28mm deep bass
-            speaker, and a pair of 16mm / 12mm illuminated switches, this saber
-            has every technological feature possible in a prop of this kind.
-          </p>
-          <p>
-            The hilt has been powdercoated in an eternal empire style, using a
-            two-tone silver effect to highlight the care and precision used by
-            its wielder.
-          </p>
-          <p>
-            The hilt is finished using a distressed leather wrap that will
-            patina and age with use, creating a one of a kind look to match the
-            weapon.
-          </p>
-        </li>
-      </ul>
-    </Wrapper>
-  </Layout>
-)}
+            {/* Description */}
+            <p>
+              This saber uses an MHSv1 core with a pair of custom cut aluminum
+              shrouds to accentuate the choke. Accent LEDs in the choke create a
+              'reactor' effect, matching the blade color the same way a crystal
+              chamber would.
+            </p>
+            <p>
+              Using the latest Crystal Focus X soundboard, a 28mm deep bass
+              speaker, and a pair of 16mm / 12mm illuminated switches, this
+              saber has every technological feature possible in a prop of this
+              kind.
+            </p>
+            <p>
+              The hilt has been powdercoated in an eternal empire style, using a
+              two-tone silver effect to highlight the care and precision used by
+              its wielder.
+            </p>
+            <p>
+              The hilt is finished using a distressed leather wrap that will
+              patina and age with use, creating a one of a kind look to match
+              the weapon.
+            </p>
+          </li>
+        </ul>
+      </Wrapper>
+    </Layout>
+  )
+}
 
 export default PaladinPage

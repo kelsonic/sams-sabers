@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 // Relative imports.
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import ArrowIcon from '../images/arrow.svg'
+import ArrowIcon from "../images/arrow.svg"
 
 const Wrapper = styled.div`
   align-items: center;
@@ -48,7 +48,7 @@ const Wrapper = styled.div`
   .saber-image {
     max-height: 275px;
   }
-  
+
   .hidden {
     display: none;
   }
@@ -83,89 +83,102 @@ const Wrapper = styled.div`
 `
 
 const ArbiterPage = () => {
+  const [selectedImage, setSelectedImage] = useState(1)
+  const imageCount = 5
 
-  const [selectedImage, setSelectedImage] = useState(1);
-  const imageCount = 5;
-
-  const changeImage = (count) => {
-    const newCount = selectedImage + count;
+  const changeImage = count => {
+    const newCount = selectedImage + count
 
     if (newCount > imageCount) {
-      setSelectedImage(1);
-      return;
+      setSelectedImage(1)
+      return
     }
-    if (newCount  < 1) {
-      setSelectedImage(imageCount);
-      return;
+    if (newCount < 1) {
+      setSelectedImage(imageCount)
+      return
     }
 
-    setSelectedImage(newCount);
+    setSelectedImage(newCount)
   }
 
   return (
-  <Layout>
-    <Seo title="Arbiter" />
-    <Wrapper>
-    <Link to="/" className="">
-      <h1>SAM&apos;S SABERS</h1>
-      </Link>
+    <Layout>
+      <Seo title="Arbiter" />
+      <Wrapper>
+        <Link to="/" className="">
+          <h1>SAM&apos;S SABERS</h1>
+        </Link>
 
-      <ul>
-        <li>
-          {/* Images */}
-          <div className="images">
-            <div className="arrow-holder">
-              <ArrowIcon className="left-arrow" onClick={()=> changeImage(-1)}/>
-            </div>
+        <ul>
+          <li>
+            {/* Images */}
+            <div className="images">
+              <div className="arrow-holder">
+                <ArrowIcon
+                  className="left-arrow"
+                  onClick={() => changeImage(-1)}
+                />
+              </div>
               <div className="focused-image">
                 <StaticImage
                   alt="arbiter 1"
-                  className={`saber-image ${selectedImage === 1 ? "selected" : "hidden"}`}
+                  className={`saber-image ${
+                    selectedImage === 1 ? "selected" : "hidden"
+                  }`}
                   formats={["auto", "webp", "avif"]}
                   src="../images/arbiter-1.jpg"
                 />
                 <StaticImage
                   alt="arbiter 2"
-                  className={`saber-image ${selectedImage === 2 ? "selected" : "hidden"}`}
+                  className={`saber-image ${
+                    selectedImage === 2 ? "selected" : "hidden"
+                  }`}
                   formats={["auto", "webp", "avif"]}
                   src="../images/arbiter-2.jpg"
                 />
                 <StaticImage
                   alt="arbiter 3"
-                  className={`saber-image ${selectedImage === 3 ? "selected" : "hidden"}`}
+                  className={`saber-image ${
+                    selectedImage === 3 ? "selected" : "hidden"
+                  }`}
                   formats={["auto", "webp", "avif"]}
                   src="../images/arbiter-3.jpg"
                 />
                 <StaticImage
                   alt="arbiter 4"
-                  className={`saber-image ${selectedImage === 4 ? "selected" : "hidden"}`}
+                  className={`saber-image ${
+                    selectedImage === 4 ? "selected" : "hidden"
+                  }`}
                   formats={["auto", "webp", "avif"]}
                   src="../images/arbiter-4.jpg"
                 />
                 <StaticImage
                   alt="arbiter 5"
-                  className={`saber-image ${selectedImage === 5 ? "selected" : "hidden"}`}
+                  className={`saber-image ${
+                    selectedImage === 5 ? "selected" : "hidden"
+                  }`}
                   formats={["auto", "webp", "avif"]}
                   src="../images/arbiter-5.jpg"
                 />
               </div>
               <div className="arrow-holder">
-                <ArrowIcon className="right-arrow" onClick={()=> changeImage(1)}/>
+                <ArrowIcon
+                  className="right-arrow"
+                  onClick={() => changeImage(1)}
+                />
               </div>
-          </div>
+            </div>
 
-          {/* Title */}
-          <h2>The Arbiter</h2>
+            {/* Title */}
+            <h2>The Arbiter</h2>
 
-          {/* Description */}
-          <p>
-           Need to add a description
-          </p>
-          
-        </li>
-      </ul>
-    </Wrapper>
-  </Layout>
-)}
+            {/* Description */}
+            <p>Need to add a description</p>
+          </li>
+        </ul>
+      </Wrapper>
+    </Layout>
+  )
+}
 
 export default ArbiterPage

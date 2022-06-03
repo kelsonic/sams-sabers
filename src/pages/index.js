@@ -34,7 +34,7 @@ const Wrapper = styled.div`
 
 const IndexPage = () => (
   <Layout>
-  <Seo title="Home" />
+    <Seo title="Home" />
 
     <Wrapper>
       <h1>SAM&apos;S SABERS</h1>
@@ -50,7 +50,6 @@ const IndexPage = () => (
       <Link to="/wanderer/" className="saber-link">
         Wanderer
       </Link>
-
     </Wrapper>
   </Layout>
 )

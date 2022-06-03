@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 // Relative imports.
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import ArrowIcon from '../images/arrow.svg'
+import ArrowIcon from "../images/arrow.svg"
 
 const Wrapper = styled.div`
   align-items: center;
@@ -83,82 +83,93 @@ const Wrapper = styled.div`
 `
 
 const WandererPage = () => {
+  const [selectedImage, setSelectedImage] = useState(1)
+  const imageCount = 3
 
-const [selectedImage, setSelectedImage] = useState(1);
-const imageCount = 3;
+  const changeImage = count => {
+    const newCount = selectedImage + count
 
-const changeImage = (count) => {
-  const newCount = selectedImage + count;
+    if (newCount > imageCount) {
+      setSelectedImage(1)
+      return
+    }
+    if (newCount < 1) {
+      setSelectedImage(imageCount)
+      return
+    }
 
-  if (newCount > imageCount) {
-    setSelectedImage(1);
-    return;
+    setSelectedImage(newCount)
   }
-  if (newCount  < 1) {
-    setSelectedImage(imageCount);
-    return;
-  }
+  return (
+    <Layout>
+      <Seo title="Wanderer" />
+      <Wrapper>
+        <Link to="/" className="">
+          <h1>SAM&apos;S SABERS</h1>
+        </Link>
 
-  setSelectedImage(newCount);
+        <ul>
+          <li>
+            {/* Images */}
+            <div className="images">
+              <div className="arrow-holder">
+                <ArrowIcon
+                  className="left-arrow"
+                  onClick={() => changeImage(-1)}
+                />
+              </div>
+              <div className="focused-image">
+                <StaticImage
+                  alt="wanderer 1"
+                  className={`saber-image ${
+                    selectedImage === 1 ? "selected" : "hidden"
+                  }`}
+                  formats={["auto", "webp", "avif"]}
+                  src="../images/wanderer-1.jpg"
+                />
+                <StaticImage
+                  alt="wanderer 2"
+                  className={`saber-image ${
+                    selectedImage === 2 ? "selected" : "hidden"
+                  }`}
+                  formats={["auto", "webp", "avif"]}
+                  src="../images/wanderer-2.jpg"
+                />
+                <StaticImage
+                  alt="wanderer 3"
+                  className={`saber-image ${
+                    selectedImage === 3 ? "selected" : "hidden"
+                  }`}
+                  formats={["auto", "webp", "avif"]}
+                  src="../images/wanderer-3.jpg"
+                />
+                <StaticImage
+                  alt="wanderer 4"
+                  className={`saber-image ${
+                    selectedImage === 4 ? "selected" : "hidden"
+                  }`}
+                  formats={["auto", "webp", "avif"]}
+                  src="../images/wanderer-4.jpg"
+                />
+              </div>
+              <div className="arrow-holder">
+                <ArrowIcon
+                  className="right-arrow"
+                  onClick={() => changeImage(1)}
+                />
+              </div>
+            </div>
+
+            {/* Title */}
+            <h2>The Wanderer</h2>
+
+            {/* Description */}
+            <p>Need to add a description</p>
+          </li>
+        </ul>
+      </Wrapper>
+    </Layout>
+  )
 }
-return (
-  <Layout>
-    <Seo title="Wanderer" />
-    <Wrapper>
-    <Link to="/" className="">
-      <h1>SAM&apos;S SABERS</h1>
-      </Link>
-
-      <ul>
-        <li>
-          {/* Images */}
-          <div className="images">
-            <div className="arrow-holder">
-              <ArrowIcon className="left-arrow" onClick={()=> changeImage(-1)}/>
-            </div>
-            <div className="focused-image">
-            <StaticImage
-              alt="wanderer 1"
-              className={`saber-image ${selectedImage === 1 ? "selected" : "hidden"}`}
-              formats={["auto", "webp", "avif"]}
-              src="../images/wanderer-1.jpg"
-            />
-            <StaticImage
-              alt="wanderer 2"
-              className={`saber-image ${selectedImage === 2 ? "selected" : "hidden"}`}
-              formats={["auto", "webp", "avif"]}
-              src="../images/wanderer-2.jpg"
-            />
-            <StaticImage
-              alt="wanderer 3"
-              className={`saber-image ${selectedImage === 3 ? "selected" : "hidden"}`}
-              formats={["auto", "webp", "avif"]}
-              src="../images/wanderer-3.jpg"
-            />
-            <StaticImage
-              alt="wanderer 4"
-              className={`saber-image ${selectedImage === 4 ? "selected" : "hidden"}`}
-              formats={["auto", "webp", "avif"]}
-              src="../images/wanderer-4.jpg"
-            />
-            </div>
-            <div className="arrow-holder">
-              <ArrowIcon className="right-arrow" onClick={()=> changeImage(1)}/>
-            </div>
-          </div>
-
-          {/* Title */}
-          <h2>The Wanderer</h2>
-
-          {/* Description */}
-          <p>
-           Need to add a description
-          </p>
-          
-        </li>
-      </ul>
-    </Wrapper>
-  </Layout>
-)}
 
 export default WandererPage

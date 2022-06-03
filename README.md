@@ -18,4 +18,4 @@ The server should now be running on [localhost:8000](http://localhost:8000)! Woo
 
 ## Deployments
 
-Deployments are automated when merging branches into *main* thanks to [Gatsby Cloud](https://www.gatsbyjs.com/dashboard//)!
+Deployments are automated when merging branches into _main_ thanks to [Gatsby Cloud](https://www.gatsbyjs.com/dashboard//)!
