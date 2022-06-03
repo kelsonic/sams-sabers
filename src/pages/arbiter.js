@@ -1,11 +1,12 @@
 // Node modules.
-import * as React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 // Relative imports.
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import ArrowIcon from '../images/arrow.svg'
 
 const Wrapper = styled.div`
   align-items: center;
@@ -14,26 +15,94 @@ const Wrapper = styled.div`
   width: 100%;
 
   ul {
+    background: rgba(0, 0, 0, 0.7);
     align-items: center;
     display: flex;
     flex-direction: column;
-    max-width: 800px;
+    width: 600px;
     padding: 0 20px;
 
     li {
-      background: rgba(0, 0, 0, 0.7);
       border-radius: 10px;
       padding: 20px;
 
       .images {
         align-items: center;
         display: flex;
+        justify-content: center;
+        width: 500px;
+        height: 300px;
+        margin-top: 32px;
+        margin-bottom: 24px;
       }
+    }
+  }
+
+  .focused-image {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .saber-image {
+    max-height: 275px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+
+  .arrow-holder {
+    display: flex;
+    height: 60px;
+    width: 60px;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+  }
+
+  .left-arrow {
+    width: 50px;
+    height: 50px;
+    fill: white;
+    transform: rotate(90deg);
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .right-arrow {
+    width: 50px;
+    height: 50px;
+    fill: white;
+    transform: rotate(270deg);
+    &:hover {
+      cursor: pointer;
     }
   }
 `
 
-const ArbiterPage = () => (
+const ArbiterPage = () => {
+
+  const [selectedImage, setSelectedImage] = useState(1);
+  const imageCount = 5;
+
+  const changeImage = (count) => {
+    const newCount = selectedImage + count;
+
+    if (newCount > imageCount) {
+      setSelectedImage(1);
+      return;
+    }
+    if (newCount  < 1) {
+      setSelectedImage(imageCount);
+      return;
+    }
+
+    setSelectedImage(newCount);
+  }
+
+  return (
   <Layout>
     <Seo title="Arbiter" />
     <Wrapper>
@@ -45,36 +114,44 @@ const ArbiterPage = () => (
         <li>
           {/* Images */}
           <div className="images">
-            <StaticImage
-              alt="arbiter image 1"
-              className="saber-image"
-              formats={["auto", "webp", "avif"]}
-              src="../images/arbiter-1.jpg"
-            />
-            <StaticImage
-              alt="arbiter image 2"
-              className="saber-image"
-              formats={["auto", "webp", "avif"]}
-              src="../images/arbiter-2.jpg"
-            />
-            <StaticImage
-              alt="arbiter image 3"
-              className="saber-image"
-              formats={["auto", "webp", "avif"]}
-              src="../images/arbiter-3.jpg"
-            />
-            <StaticImage
-              alt="arbiter image 4"
-              className="saber-image"
-              formats={["auto", "webp", "avif"]}
-              src="../images/arbiter-4.jpg"
-            />
-            <StaticImage
-              alt="arbiter image 5"
-              className="saber-image"
-              formats={["auto", "webp", "avif"]}
-              src="../images/arbiter-5.jpg"
-            />
+            <div className="arrow-holder">
+              <ArrowIcon className="left-arrow" onClick={()=> changeImage(-1)}/>
+            </div>
+              <div className="focused-image">
+                <StaticImage
+                  alt="arbiter 1"
+                  className={`saber-image ${selectedImage === 1 ? "selected" : "hidden"}`}
+                  formats={["auto", "webp", "avif"]}
+                  src="../images/arbiter-1.jpg"
+                />
+                <StaticImage
+                  alt="arbiter 2"
+                  className={`saber-image ${selectedImage === 2 ? "selected" : "hidden"}`}
+                  formats={["auto", "webp", "avif"]}
+                  src="../images/arbiter-2.jpg"
+                />
+                <StaticImage
+                  alt="arbiter 3"
+                  className={`saber-image ${selectedImage === 3 ? "selected" : "hidden"}`}
+                  formats={["auto", "webp", "avif"]}
+                  src="../images/arbiter-3.jpg"
+                />
+                <StaticImage
+                  alt="arbiter 4"
+                  className={`saber-image ${selectedImage === 4 ? "selected" : "hidden"}`}
+                  formats={["auto", "webp", "avif"]}
+                  src="../images/arbiter-4.jpg"
+                />
+                <StaticImage
+                  alt="arbiter 5"
+                  className={`saber-image ${selectedImage === 5 ? "selected" : "hidden"}`}
+                  formats={["auto", "webp", "avif"]}
+                  src="../images/arbiter-5.jpg"
+                />
+              </div>
+              <div className="arrow-holder">
+                <ArrowIcon className="right-arrow" onClick={()=> changeImage(1)}/>
+              </div>
           </div>
 
           {/* Title */}
@@ -89,6 +166,6 @@ const ArbiterPage = () => (
       </ul>
     </Wrapper>
   </Layout>
-)
+)}
 
 export default ArbiterPage

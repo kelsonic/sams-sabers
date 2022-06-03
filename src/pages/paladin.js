@@ -1,11 +1,12 @@
 // Node modules.
-import * as React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 // Relative imports.
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import ArrowIcon from '../images/arrow.svg'
 
 const Wrapper = styled.div`
   align-items: center;
@@ -14,26 +15,94 @@ const Wrapper = styled.div`
   width: 100%;
 
   ul {
+    background: rgba(0, 0, 0, 0.7);
     align-items: center;
     display: flex;
     flex-direction: column;
-    max-width: 800px;
+    width: 600px;
     padding: 0 20px;
 
     li {
-      background: rgba(0, 0, 0, 0.7);
       border-radius: 10px;
       padding: 20px;
 
       .images {
         align-items: center;
         display: flex;
+        justify-content: center;
+        width: 500px;
+        height: 300px;
+        margin-top: 32px;
+        margin-bottom: 24px;
       }
+    }
+  }
+
+  .focused-image {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .saber-image {
+    max-height: 275px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+
+  .arrow-holder {
+    display: flex;
+    height: 60px;
+    width: 60px;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+  }
+
+  .left-arrow {
+    width: 50px;
+    height: 50px;
+    fill: white;
+    transform: rotate(90deg);
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .right-arrow {
+    width: 50px;
+    height: 50px;
+    fill: white;
+    transform: rotate(270deg);
+    &:hover {
+      cursor: pointer;
     }
   }
 `
 
-const PaladinPage = () => (
+const PaladinPage = () => {
+
+  const [selectedImage, setSelectedImage] = useState(1);
+  const imageCount = 3;
+
+  const changeImage = (count) => {
+    const newCount = selectedImage + count;
+
+    if (newCount > imageCount) {
+      setSelectedImage(1);
+      return;
+    }
+    if (newCount  < 1) {
+      setSelectedImage(imageCount);
+      return;
+    }
+
+    setSelectedImage(newCount);
+  }
+
+  return (
   <Layout>
     <Seo title="Paladin" />
     <Wrapper>
@@ -46,24 +115,32 @@ const PaladinPage = () => (
         <li>
           {/* Images */}
           <div className="images">
-            <StaticImage
-              alt="paladin image 1"
-              className="saber-image"
-              formats={["auto", "webp", "avif"]}
-              src="../images/paladin-1.jpg"
-            />
-            <StaticImage
-              alt="paladin image 2"
-              className="saber-image"
-              formats={["auto", "webp", "avif"]}
-              src="../images/paladin-2.jpg"
-            />
-            <StaticImage
-              alt="paladin image 3"
-              className="saber-image"
-              formats={["auto", "webp", "avif"]}
-              src="../images/paladin-3.jpg"
-            />
+            <div className="arrow-holder">
+              <ArrowIcon className="left-arrow" onClick={()=> changeImage(-1)}/>
+            </div>
+            <div className="focused-image">
+              <StaticImage
+                alt="paladin 1"
+                className={`saber-image ${selectedImage === 1 ? "selected" : "hidden"}`}
+                formats={["auto", "webp", "avif"]}
+                src="../images/paladin-1.jpg"
+              />
+              <StaticImage
+                alt="paladin 2"
+                className={`saber-image ${selectedImage === 2 ? "selected" : "hidden"}`}
+                formats={["auto", "webp", "avif"]}
+                src="../images/paladin-2.jpg"
+              />
+              <StaticImage
+                alt="paladin 3"
+                className={`saber-image ${selectedImage === 3 ? "selected" : "hidden"}`}
+                formats={["auto", "webp", "avif"]}
+                src="../images/paladin-3.jpg"
+              />
+            </div>
+            <div className="arrow-holder">
+              <ArrowIcon className="right-arrow" onClick={()=> changeImage(1)}/>
+            </div>
           </div>
 
           {/* Title */}
@@ -95,6 +172,6 @@ const PaladinPage = () => (
       </ul>
     </Wrapper>
   </Layout>
-)
+)}
 
 export default PaladinPage
